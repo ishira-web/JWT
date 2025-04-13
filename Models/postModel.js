@@ -2,16 +2,16 @@ import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema({
     title : {
-        typeof : String,
+        type : String,
         required : [true,"Title Required !"],
     },
     description : {
-        typeof : String,
+        type : String,
         required : [true,"Description Required !"],
         trim : true
     },
     userID : {
-        typeof : mongoose.Schema.Types.ObjectId,
+        type : mongoose.Schema.Types.ObjectId,
         ref : "User",
         required : true
     }

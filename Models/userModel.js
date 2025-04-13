@@ -1,43 +1,47 @@
 import mongoose from "mongoose";
 
-const userSchema = mongoose.Schema({
-
-    email :{
-        typeof : String,
-        required : [true,"Email is Required !"],
-        unique : [true,"Email must be unique !"],
-        trim :true,
-        minLenght : [5,"Email must have 5 characters !"],
-        lowercase : true,
+const userSchema = mongoose.Schema(
+  {
+    email: {
+      type: String,
+      required: [true, "Email is Required !"],
+      unique: [true, "Email must be unique !"],
+      trim: true,
+      minLength: [5, "Email must have 5 characters !"], 
+      lowercase: true,
     },
-    password : {
-        typeof : String,
-        required : [true,"Password must be Required !"],
-        trim : true,
-        select : false
+    password: {
+      type: String, 
+      required: [true, "Password must be Required !"],
+      trim: true,
+      select: false,
     },
     verified: {
-        typeof : boolean,
-        default : false
+      type: Boolean, 
+      default: false,
     },
-    verificatioCode : {
-        typeof : String,
-        select : false
+    verificatioCode: {
+      type: String, 
+      select: false,
     },
-    verificatioCodeValidation : {
-        typeof : String,
-        select : false
+    verificatioCodeValidation: {
+      type: String, 
+      select: false,
     },
-    fogotPassCode : {
-        typeof : String,
-        select : false
+    fogotPassCode: {
+      type: String, 
+      select: false,
     },
-    fogotPassCodeValidation : {
-        typeof : number,
-        select : false
-    }
-},{
-    timestamps : true
-});
+    fogotPassCodeValidation: {
+      type: Number, 
+      select: false,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-module.exports = mongoose.model("User",userSchema);
+const userModel = mongoose.model("User", userSchema);
+
+export default userModel;
