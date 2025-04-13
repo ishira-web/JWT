@@ -4,7 +4,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
 import 'dotenv/config';
-
+import authRouter from './Routers/authRouter.js'
 
 
 const app =  express()
@@ -16,6 +16,7 @@ app.use(helmet());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use('/api/auth',authRouter);
 
 mongoose.connect(process.env.MONGODB_URI).then(()=>{
     console.log("Database Connected !")
